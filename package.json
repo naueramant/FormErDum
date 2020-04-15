@@ -1,0 +1,17 @@
+{
+  "name": "FormErDum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jonas Tranberg",
+  "license": "MIT",
+  "dependencies": {
+    "rollup": "^2.6.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  }
+}

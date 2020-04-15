@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM ER (DUM)ᵏ</title>
+
+    <style>
+      html,
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        background-color: #fff;
+        color: #222;
+
+        margin: 0px;
+        padding: 0px;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      h2 {
+        font-weight: lighter;
+      }
+
+      header {
+        font-size: 2em;
+        padding: 16px 16px 0px 16px;
+        font-weight: bold;
+      }
+
+      main {
+        display: flex;
+
+        width: 100%;
+        height: 100%;
+      }
+
+      .column {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flex {
+        flex: 1;
+      }
+
+      button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      textarea {
+        padding: 16px;
+        resize: none;
+      }
+
+      li {
+        padding: 8px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      FORM ER (DUM)ᵏ
+    </header>
+    <main>
+      <div class="column flex">
+        <h2>Documentation</h2>
+
+        <span>
+          A programming language based on <a href="https://wikipedia.org/wiki/Brainfuck" target="__blank">brainfuck</a> presented on a "løbeseddel"
+          from 15 April 2020. The "løbeseddel" can be found
+          <a href="seddel.jpg" target="__blank">here</a>.
+        </span>
+
+        <br />
+
+        <b>Instructions</b>
+
+        <ul>
+          <li>
+            <b>FORM ER DUM:</b>
+            <br />
+            increment the data pointer (to point the next cell to the right).
+          </li>
+          <li>
+            <b>FORM ER DUM DUM:</b>
+            <br />
+            decrement the data pointer (to point the next cell to the left).
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM:</b>
+            <br />
+            increment (increase by one) the byte at the data pointer.
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM DUM:</b>
+            <br />
+            decrement (decrease by one) the byte at the data pointer.
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM DUM DUM:</b>
+            <br />
+            output the byte at the data pointer.
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM DUM DUM DUM:</b>
+            <br />
+            accept one byte of input, storing its value in the byte at the data
+            pointer.
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM DUM DUM DUM DUM:</b>
+            <br />
+            if the byte at the data pointer is zero, then instead of moving the
+            instruction pointer forward to the next command, jump it forward to
+            the command after the matching FORM ER DUM DUM DUM DUM DUM DUM DUM
+            DUM command.
+          </li>
+          <li>
+            <b>FORM ER DUM DUM DUM DUM DUM DUM DUM DUM:</b>
+            <br />
+            if the byte at the data pointer is nonzero, then instead of moving
+            the instruction pointer forward to the next command, jump it back to
+            the command after the matching FORM ER DUM DUM DUM DUM DUM DUM DUM
+            command.
+          </li>
+        </ul>
+      </div>
+      <div class="column flex">
+        <h2>Program</h2>
+        <textarea name="input" id="input" class="flex"></textarea>
+        <button onclick="interpret()">RUN</button>
+        <h2>Output</h2>
+        <textarea name="output" id="output" class="flex"></textarea>
+      </div>
+    </main>
+
+    <script src="bundle.min.js" t></script>
+
+    <script>
+      const helloWorld = `# Hello World Program
+
+FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM FORM ER DUM DUM FORM ER DUM DUM FORM ER DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM DUM FORM ER DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM FORM ER DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM DUM FORM ER DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM FORM ER DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM FORM ER DUM DUM DUM DUM DUM`;
+
+      const inputElem = document.getElementById("input");
+      const outputElem = document.getElementById("output");
+
+      inputElem.value = helloWorld;
+
+      const frd = new FormErDum();
+
+      function interpret() {
+        const inputText = inputElem.value;
+        const res = frd.interpret(inputText);
+
+        outputElem.value = res;
+
+        frd.reset();
+      }
+    </script>
+  </body>
+</html>
